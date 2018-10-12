@@ -9,4 +9,10 @@ class Helpers < ActiveRecord::Base
     !!session[:user_id]
   end
 
+  def self.valid_params?(params)
+    if !params.empty?
+      true
+    end
+  end
+
 end
