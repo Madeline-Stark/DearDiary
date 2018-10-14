@@ -68,18 +68,9 @@ class EntriesController < ApplicationController
       redirect "/entries/#{params[:id]}/edit"
   end
 
-  get '/entries/:id/delete' do
-    @entry = Entry.find_by_id(params[:id])
-    if !Helpers.logged_in?(session)
-      redirect '/signin'
-    elsif Helpers.current_user(session).entries.include?(@entry)
-      erb :'entries/delete'
-    else
-      redirect '/entries' #if redirect to signin but signed in won't let them
-    end
-  end
 
   delete '/entries/:id/delete' do
+    #got rid of get delete so can just have button, no need for seperate page
     #won't hit if don't click button
     @entry = Entry.find_by_id(params[:id])
     if !Helpers.logged_in?(session)
@@ -88,7 +79,7 @@ class EntriesController < ApplicationController
       @entry.destroy
       redirect '/entries'
     else
-      redirect '/entries'
+      redirect '/entries' #if redirect to sign in but already signed in, wont let them
     end
   end
 

@@ -1,3 +1,13 @@
-<!-- username, date, content...all checking done in controller
-links to edit and delete?
--->
+
+<h2> <%= @entry.date %> </h2>
+<h3> by <%= @user.username %> </h3>
+
+<p>
+<%= @entry.content %>
+</p>
+
+<h4><a href="/entries/<%= @entry.id %>/edit">Edit</a></h4>
+<form action='/entries/<%=@entry.id%>/delete' method="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Entry">
+</form>
