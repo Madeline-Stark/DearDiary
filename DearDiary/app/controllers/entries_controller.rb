@@ -1,4 +1,3 @@
-require 'date'
 
 class EntriesController < ApplicationController
 
@@ -23,7 +22,8 @@ class EntriesController < ApplicationController
   post '/entries' do
     if Helpers.valid_params?(params["content"])
       @entry = Entry.create
-      @entry.date = Date.today.strftime("%A")
+      date_today = DateTime.now
+      @entry.date = date_today.strftime("%A, %B %d, %Y")
       @entry.content = params["content"]
       @entry.save
       @user = Helpers.current_user(session)
