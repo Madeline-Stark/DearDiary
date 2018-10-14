@@ -1,6 +1,4 @@
 class Helpers < ActiveRecord::Base
-  validates_presence_of :username, :password
-  validates_uniqueness_of :user_name
 
   def self.current_user(session)
       User.find(session[:user_id])

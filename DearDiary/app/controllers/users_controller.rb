@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       end
     end
 
-    post "/signout" do
+    get "/signout" do
         session.clear
         redirect "/signin"
     end
