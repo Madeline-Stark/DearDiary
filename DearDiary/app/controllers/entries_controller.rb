@@ -66,6 +66,7 @@ class EntriesController < ApplicationController
       erb :'entries/show_entry'
     else
       redirect "/entries/#{params[:id]}/edit"
+    end
   end
 
 
