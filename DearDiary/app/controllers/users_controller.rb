@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
 
   get '/signup' do
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
 
     post '/signup' do
       #use quote instead of symbols for params below?
-      if Helpers.valid_params?(params[:username], params[:password])
+      if Helpers.valid_params?(params[:username]) #can only send in one argument, but has secure pw already checks for pw
           user = User.create(:username => params[:username], :password => params[:password])
           session[:user_id] = user.id
           redirect "/entries"
