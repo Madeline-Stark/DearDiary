@@ -3,9 +3,9 @@ Edit Entry
 <form action='/entries/<%=@entry.id%>' method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
 
-  Entry Content:
-
-  <input type="text" id="content" name="content" value="<%=@entry.content%>" >
+  <textarea name="content" rows="10" cols="30">
+    <%=@entry.content%>
+  </textarea>
 
   <input type="submit" id="submit" value="Edit Entry">
 
