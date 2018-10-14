@@ -14,7 +14,7 @@ class EntriesController < ApplicationController
 
   get '/entries/new' do
     if Helpers.logged_in?(session)
-      erb :'tweets/new'
+      erb :'entries/new'
     else
       redirect '/signin'
     end
@@ -39,7 +39,7 @@ class EntriesController < ApplicationController
   get '/entries/:id' do
     @entry = Entry.find_by_id(params[:id]) #define here so don't need to find_by_id twice
     @user = User.find_by_id(@entry.user_id)
-    if Helper.logged_in?(session) && Helpers.current_user(session).id == @user.id
+    if Helpers.logged_in?(session) && Helpers.current_user(session).id == @user.id
       erb :'entries/show_entry'
     else
       redirect '/signin'
