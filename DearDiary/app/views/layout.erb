@@ -6,12 +6,13 @@
   <body>
 
     <%=yield%>
-    
+
     <% if Helpers.logged_in?(session) %>
       <form action="/signout" method="GET">
         <input type="submit" value="Sign Out">
       </form>
       <a href="/entries"> Your Entries </a>
+      <a href="/entries/new"> New Entry </a>
     <% else %>
       <a href="/signin">Sign In</a>
       <a href="/signup">Sign Up</a>

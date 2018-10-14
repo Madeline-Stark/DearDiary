@@ -4,7 +4,7 @@
 <ul> <% @entries.each do |entry| %>
   <li><h2><a href="/entries/<%= entry.id %>"><%= entry.date %></a></h2></li>
   <li><h4><a href="/entries/<%= entry.id %>/edit">Edit</a></h4></li>
-  <form action='/entries/<%=@entry.id%>/delete' method="POST">
+  <form action='/entries/<%=entry.id%>/delete' method="POST">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Entry">
   </form>
