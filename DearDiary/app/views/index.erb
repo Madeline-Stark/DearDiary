@@ -1,18 +1,1 @@
 <h1>Welcome to Dear Diary</h1>
-
-<% if Helpers.logged_in?(session) %>
-  <form action="/signout" method="GET">
-    <input type="submit" value="Log Out">
-  </form>
-  <form action="/entries" method="GET">
-    <input type="submit" value="Your Entries">
-  </form>
-<% else %>
-  <form action="/signin" method="GET">
-    <input type="submit" value="Sign In">
-  </form>
-  or
-  <form action="/signup" method="GET">
-    <input type="submit" value="Sign Up">
-  </form>
-<% end %>
