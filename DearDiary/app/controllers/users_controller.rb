@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-      #use quote instead of symbols for params below?
       if Helpers.valid_params?(params[:username]) #can only send in one argument, but has secure pw already checks for pw
           user = User.new(:username => params[:username], :password => params[:password]) #can only pass in arguments to new, not create
           user.save

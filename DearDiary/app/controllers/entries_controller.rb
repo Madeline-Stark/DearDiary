@@ -3,7 +3,6 @@ class EntriesController < ApplicationController
 
   get '/entries' do
     if Helpers.logged_in?(session)
-      #make sure calling .entries like below works
       @entries = Helpers.current_user(session).entries
       erb :'entries/entries'
     else
