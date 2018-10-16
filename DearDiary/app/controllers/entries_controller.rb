@@ -58,11 +58,11 @@ class EntriesController < ApplicationController
 
   patch '/entries/:id' do
     @entry = Entry.find_by_id(params[:id])
-    if Helpers.valid_params?(params["content"])
+    if Helpers.valid_params?(params["content"]) && Helpers.current_user(session).entries.include?(@entry)
       @entry.content = params["content"]
       @entry.save
       @user = User.find_by_id(@entry.user_id)
-      erb :'entries/show_entry'
+      redirect "/entries/#{params[:id]}"
     else
       redirect "/entries/#{params[:id]}/edit"
     end
